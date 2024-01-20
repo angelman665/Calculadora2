@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/laranja"
+    android:orientation="vertical"
+    android:padding="12dp"
+    tools:context=".actv_calculadora">
+
+
+    <TextView
+        android:id="@+id/txt_visor_calculadora"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:background="@color/white"
+        android:hint="Visor"
+        android:textAlignment="textEnd"
+        android:textSize="23pt">
+
+    </TextView>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/btmais"
+                style="@style/botao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="+"></Button>
+
+            <Button
+                android:id="@+id/btmenos"
+                style="@style/botao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="-"></Button>
+
+            <Button
+                android:id="@+id/btvezes"
+                style="@style/botao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="*"></Button>
+
+            <Button
+                android:id="@+id/btdivide"
+                style="@style/botao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text=":"></Button>
+        </TableRow>
+
+        <TableRow>
+
+
+        </TableRow>
+    </TableLayout>
+
+
+</LinearLayout>

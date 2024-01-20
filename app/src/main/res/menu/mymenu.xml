@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:title="Calculadora"
+        app:showAsAction="collapseActionView"
+        android:icon="@drawable/chave"
+        android:id="@+id/mnu_calculadora_mymnu">
+
+    </item>
+
+    <item android:title="Selos"
+        app:showAsAction="collapseActionView"
+        android:icon="@drawable/chave"
+        android:id="@+id/mnu_selos_mymnu">
+
+    </item>
+</menu>
