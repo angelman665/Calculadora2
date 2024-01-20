@@ -28,28 +28,28 @@
         <TableRow>
 
             <Button
-                android:id="@+id/btmais"
+                android:id="@+id/btsete"
                 style="@style/botao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="+"></Button>
+                android:text="7"></Button>
 
             <Button
-                android:id="@+id/btmenos"
+                android:id="@+id/btoito"
                 style="@style/botao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="-"></Button>
+                android:text="8"></Button>
 
             <Button
-                android:id="@+id/btvezes"
+                android:id="@+id/btnove"
                 style="@style/botao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="*"></Button>
+                android:text="9"></Button>
 
             <Button
                 android:id="@+id/btdivide"
@@ -62,8 +62,110 @@
 
         <TableRow>
 
+            <Button
+                android:id="@+id/btquatro"
+                style="@style/botao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="4"></Button>
 
+            <Button
+                android:id="@+id/btcinco"
+                style="@style/botao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="5"></Button>
+
+            <Button
+                android:id="@+id/btseis"
+                style="@style/botao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="6"></Button>
+
+            <Button
+                android:id="@+id/btvezes"
+                style="@style/botao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="x"></Button>
         </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/btum"
+                style="@style/botao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="1"></Button>
+
+            <Button
+                android:id="@+id/btdois"
+                style="@style/botao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="2"></Button>
+
+            <Button
+                android:id="@+id/bttres"
+                style="@style/botao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="3"></Button>
+
+            <Button
+                android:id="@+id/btmenos"
+                style="@style/botao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="-"></Button>
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/btabc"
+                style="@style/botao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text=""></Button>
+
+            <Button
+                android:id="@+id/btzero"
+                style="@style/botao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="0"></Button>
+
+            <Button
+                android:id="@+id/btvirgula"
+                style="@style/botao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text=","></Button>
+
+            <Button
+                android:id="@+id/btmais"
+                style="@style/botao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="+"></Button>
+        </TableRow>
+
+
     </TableLayout>
 
 
