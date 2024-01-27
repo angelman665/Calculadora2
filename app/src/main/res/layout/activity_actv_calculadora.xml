@@ -14,10 +14,10 @@
         android:id="@+id/txt_visor_calculadora"
         android:layout_width="match_parent"
         android:layout_height="150dp"
+        android:layout_margin="10dp"
         android:background="@color/white"
         android:textAlignment="textEnd"
-        android:textSize="40pt"
-        android:layout_margin="10dp">
+        android:textSize="20pt">
 
 
     </TextView>
@@ -33,15 +33,14 @@
                 style="@style/botao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="1"></Button>
+
+                android:text="%"></Button>
 
             <Button
-
                 style="@style/botao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+
                 android:text="CE"></Button>
 
             <Button
@@ -49,7 +48,7 @@
                 style="@style/botao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+
                 android:text="C"></Button>
 
             <Button
@@ -57,131 +56,166 @@
                 style="@style/botao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="-"></Button>
+
+                android:text="s"></Button>
         </TableRow>
 
         <TableRow>
 
             <Button
-                android:id="@+id/btsete"
+
                 style="@style/botao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="7"></Button>
+
+                android:text="n!"></Button>
 
             <Button
-                android:id="@+id/btoito"
+
                 style="@style/botao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="8"></Button>
+
+                android:text="DE"></Button>
 
             <Button
-                android:id="@+id/btnove"
+
                 style="@style/botao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="9"></Button>
+
+                android:text="BI"></Button>
 
             <Button
                 android:id="@+id/btdivide"
                 style="@style/botao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text=":"></Button>
+
+                android:text="/"></Button>
         </TableRow>
 
         <TableRow>
 
             <Button
-                android:id="@+id/btquatro"
-                style="@style/botao"
+                android:id="@+id/bt_7_calculadora"
+                style="@style/numBotao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="4"></Button>
+
+                android:text="7"></Button>
 
             <Button
-                android:id="@+id/btcinco"
-                style="@style/botao"
+                android:id="@+id/bt_8_calculadora"
+                style="@style/numBotao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="5"></Button>
+
+                android:text="8"></Button>
 
             <Button
-                android:id="@+id/btseis"
-                style="@style/botao"
+                android:id="@+id/bt_9_calculadora"
+                style="@style/numBotao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="6"></Button>
+
+                android:text="9"></Button>
 
             <Button
                 android:id="@+id/btvezes"
                 style="@style/botao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="x"></Button>
+
+                android:text="X"></Button>
         </TableRow>
 
         <TableRow>
 
             <Button
-                android:id="@+id/btum"
-                style="@style/botao"
+                android:id="@+id/bt_4_calculadora"
+                style="@style/numBotao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="1"></Button>
+
+                android:text="4"></Button>
 
             <Button
-                android:id="@+id/btdois"
-                style="@style/botao"
+                android:id="@+id/bt_5_calculadora"
+                style="@style/numBotao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="2"></Button>
+
+                android:text="5"></Button>
 
             <Button
-                android:id="@+id/bttres"
-                style="@style/botao"
+                android:id="@+id/bt_6_calculadora"
+                style="@style/numBotao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="3"></Button>
+
+                android:text="6"></Button>
 
             <Button
                 android:id="@+id/btmenos"
                 style="@style/botao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+
                 android:text="-"></Button>
         </TableRow>
 
         <TableRow>
 
             <Button
-                android:id="@+id/btabc"
-                style="@style/botao"
+                android:id="@+id/bt_1_calculadora"
+                style="@style/numBotao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text=""></Button>
+
+                android:text="1"></Button>
 
             <Button
-                android:id="@+id/btzero"
+                android:id="@+id/bt_2_calculadora"
+                style="@style/numBotao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="2"></Button>
+
+            <Button
+                android:id="@+id/bt_3_calculadora"
+                style="@style/numBotao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="3"></Button>
+
+            <Button
+                android:id="@+id/btmais"
                 style="@style/botao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+
+                android:text="+"></Button>
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+
+                style="@style/botao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="+/-"></Button>
+
+            <Button
+                android:id="@+id/bt_0_calculadora"
+                style="@style/numBotao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
                 android:text="0"></Button>
 
             <Button
@@ -189,16 +223,16 @@
                 style="@style/botao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+
                 android:text=","></Button>
 
             <Button
-                android:id="@+id/btmais"
+                android:id="@+id/btigual"
                 style="@style/botao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="+"></Button>
+
+                android:text="="></Button>
         </TableRow>
 
 

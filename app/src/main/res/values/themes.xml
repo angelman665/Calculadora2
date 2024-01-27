@@ -16,6 +16,14 @@
     <style name="botao" parent="Base.Widget.AppCompat.Button.Colored">
         <item name="android:textSize">10pt</item>
         <item name="backgroundTint">@color/azul</item>
-        
+
+
+    </style>
+
+    <style name="numBotao" parent="Base.Widget.AppCompat.Button.Colored">
+        <item name="android:textSize">10pt</item>
+        <item name="backgroundTint">@color/azulClaro</item>
+
+
     </style>
 </resources>

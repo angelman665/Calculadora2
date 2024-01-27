@@ -4,6 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="laranja">#fcba03</color>
     <color name="verde">#03fc5a</color>
-    <color name="azul">#035efc</color>
+    <color name="azul">#0345fc</color>
     <color name="vermelho">#fc0303</color>
+    <color name="azulClaro">#035efc</color>
 </resources>
