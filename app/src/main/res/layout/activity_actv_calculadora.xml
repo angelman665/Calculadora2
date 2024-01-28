@@ -44,7 +44,7 @@
                 android:text="CE"></Button>
 
             <Button
-
+                android:id="@+id/bt_limpatext_calc"
                 style="@style/botao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

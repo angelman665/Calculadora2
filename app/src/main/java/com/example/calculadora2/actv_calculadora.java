@@ -13,9 +13,11 @@ public class actv_calculadora extends AppCompatActivity implements View.OnClickL
     TextView txtvisor;
     Button bt1, bt2, bt3, bt4, bt5, bt6, bt7, bt8, bt9, bt0;
     Button btmais, btmenos, btvezes, btdivide, btigual;
-    int n1, n2, resultado;
-    int cmais = 0, cmenos = 0;
-    String resultadoTexto;
+    Button btlimpaAll;
+    boolean novoCalculo = true;
+
+    double resultado, n1, n2;
+    String resultadoTexto, simbolo;
 
     // CODIGO EXECUTADO ASSIM QUE É SELECIONADA A OPÇÃO "CALCULADORA" NO MENU
     @Override
@@ -58,6 +60,9 @@ public class actv_calculadora extends AppCompatActivity implements View.OnClickL
         bt0 = findViewById(R.id.bt_0_calculadora);
         bt0.setOnClickListener(this);
 
+        btlimpaAll = findViewById(R.id.bt_limpatext_calc);
+        btlimpaAll.setOnClickListener(this);
+
 
     }
 
@@ -76,18 +81,65 @@ public class actv_calculadora extends AppCompatActivity implements View.OnClickL
             txtvisor.append("4");
         else if (v.getId() == R.id.bt_5_calculadora)
             txtvisor.append("5");
+        else if (v.getId() == R.id.bt_6_calculadora)
+            txtvisor.append("6");
+        else if (v.getId() == R.id.bt_7_calculadora)
+            txtvisor.append("7");
+        else if (v.getId() == R.id.bt_8_calculadora)
+            txtvisor.append("8");
+        else if (v.getId() == R.id.bt_9_calculadora)
+            txtvisor.append("9");
+        else if (v.getId() == R.id.bt_0_calculadora)
+            txtvisor.append("0");
         else if (v.getId() == R.id.btmais) {
-            //criada um variavel "text" que recebe o valor atual do visor
             String text = txtvisor.getText().toString();
-            //convertemos o String para Int e guardamos no n1
-            n1 = Integer.parseInt(text);
-            //adicionamos "+" no visor
-            txtvisor.append("+");
+            simbolo = "+";
+
+            if (text.endsWith("+") || text.endsWith("-") || text.endsWith("*") || text.endsWith("/")) {
+                text = text.substring(0, text.length() - 1);
+                txtvisor.setText(text + simbolo);
+            } else
+                logicaBt_operacao();
+
+        } else if (v.getId() == R.id.btmenos) {
+            String text = txtvisor.getText().toString();
+            simbolo = "-";
+
+            if (text.endsWith("+") || text.endsWith("-") || text.endsWith("*") || text.endsWith("/")) {
+                text = text.substring(0, text.length() - 1);
+                txtvisor.setText(text + simbolo);
+            } else
+                logicaBt_operacao();
+
+        } else if (v.getId() == R.id.btvezes) {
+            String text = txtvisor.getText().toString();
+            simbolo = "*";
+
+            if (text.endsWith("+") || text.endsWith("-") || text.endsWith("*") || text.endsWith("/")) {
+                text = text.substring(0, text.length() - 1);
+                txtvisor.setText(text + simbolo);
+            } else
+                logicaBt_operacao();
+        } else if (v.getId() == R.id.btdivide) {
+
+            String text = txtvisor.getText().toString();
+            simbolo = "/";
+
+            if (text.endsWith("+") || text.endsWith("-") || text.endsWith("*") || text.endsWith("/")) {
+                text = text.substring(0, text.length() - 1);
+                txtvisor.setText(text + simbolo);
+            } else
+                logicaBt_operacao();
         } else if (v.getId() == R.id.btigual) {
-            //Quando o botão "=" é pressionado, chamamos o metodo calculo()
-            calculo();
-            //apaga-se tudo que estava no visor e coloca-se o resultado da conta
-            txtvisor.setText(resultadoTexto);
+            String text = txtvisor.getText().toString();
+            if (text.endsWith("+") || text.endsWith("-") || text.endsWith("*") || text.endsWith("/")) {
+                text = text.substring(0, text.length() - 1);
+                txtvisor.setText(text);
+            } else
+                calculo();
+
+        } else if (v.getId() == R.id.bt_limpatext_calc) {
+            txtvisor.setText("");
 
         }
 
@@ -99,13 +151,97 @@ public class actv_calculadora extends AppCompatActivity implements View.OnClickL
         //Por enquanto só funciona com calculo basico. Soma de 2 numeros ex:"123+213"
 
         String text = txtvisor.getText().toString();
-        int posicao = text.indexOf('+');
 
-        String text2 = text.substring(posicao + 1).trim();
-        n2 = Integer.parseInt(text2);
+        if (text.indexOf('+') != -1) {
+            int posicao = text.indexOf('+');
+            String text2 = text.substring(posicao + 1).trim();
+            n2 = Integer.parseInt(text2);
+            resultado = n1 + n2;
+            mostraResultado();
+        } else if (text.indexOf('-') != -1) {
+            int posicao = text.indexOf('-');
+            String text2 = text.substring(posicao + 1).trim();
+            n2 = Integer.parseInt(text2);
+            resultado = n1 - n2;
+            mostraResultado();
+        } else if (text.indexOf('*') != -1) {
+            int posicao = text.indexOf('*');
+            String text2 = text.substring(posicao + 1).trim();
+            n2 = Integer.parseInt(text2);
+            resultado = n1 * n2;
+            mostraResultado();
+        } else if (text.indexOf('/') != -1) {
+            int posicao = text.indexOf('/');
+            String text2 = text.substring(posicao + 1).trim();
+            n2 = Integer.parseInt(text2);
+            resultado = n1 / n2;
+            mostraResultado();
+        }
+    }
 
-        resultado = n1 + n2;
-        resultadoTexto = String.valueOf(resultado);
+    // Metodo serve para ver se o resultado é double ou int - escreve resultado no textview
+    public void mostraResultado() {
+        if (resultado % 1 == 0)
+            resultadoTexto = String.valueOf((int) resultado);
+        else
+            resultadoTexto = String.valueOf(resultado);
+
+        txtvisor.setText(resultadoTexto);
+    }
+
+    public void logicaBt_operacao() {
+        String text;
+
+        if (novoCalculo) {
+            if (simbolo == "+") {
+                //criada um variavel "text" que recebe o valor atual do visor
+                text = txtvisor.getText().toString();
+                //convertemos o String para Int e guardamos no n1
+                n1 = Integer.parseInt(text);
+                //adicionamos "+" no visor
+                txtvisor.append("+");
+                novoCalculo = false;
+            } else if (simbolo == "-") {
+                text = txtvisor.getText().toString();
+                n1 = Integer.parseInt(text);
+                txtvisor.append("-");
+                novoCalculo = false;
+            } else if (simbolo == "*") {
+                text = txtvisor.getText().toString();
+                n1 = Integer.parseInt(text);
+                txtvisor.append("*");
+                novoCalculo = false;
+            } else if (simbolo == "/") {
+                text = txtvisor.getText().toString();
+                n1 = Integer.parseInt(text);
+                txtvisor.append("/");
+                novoCalculo = false;
+            }
+        } else {
+            if (simbolo == "+") {
+                calculo();
+                text = txtvisor.getText().toString();
+                n1 = Integer.parseInt(text);
+                txtvisor.append("+");
+            } else if (simbolo == "-") {
+                calculo();
+                text = txtvisor.getText().toString();
+                n1 = Integer.parseInt(text);
+                txtvisor.append("-");
+            } else if (simbolo == "*") {
+                calculo();
+                text = txtvisor.getText().toString();
+                n1 = Integer.parseInt(text);
+                txtvisor.append("*");
+            } else if (simbolo == "/") {
+                calculo();
+                text = txtvisor.getText().toString();
+                n1 = Integer.parseInt(text);
+                txtvisor.append("/");
+            }
+        }
 
     }
+
+
 }
