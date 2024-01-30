@@ -34,14 +34,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:text="%"></Button>
+                android:text="n!"></Button>
 
-            <Button
-                style="@style/botao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:text="CE"></Button>
 
             <Button
                 android:id="@+id/bt_limpatext_calc"
@@ -58,33 +52,6 @@
                 android:layout_height="wrap_content"
 
                 android:text="s"></Button>
-        </TableRow>
-
-        <TableRow>
-
-            <Button
-
-                style="@style/botao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:text="n!"></Button>
-
-            <Button
-
-                style="@style/botao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:text="DE"></Button>
-
-            <Button
-
-                style="@style/botao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:text="BI"></Button>
 
             <Button
                 android:id="@+id/btdivide"
@@ -94,6 +61,7 @@
 
                 android:text="/"></Button>
         </TableRow>
+
 
         <TableRow>
 
