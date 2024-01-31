@@ -13,7 +13,7 @@ public class actv_calculadora extends AppCompatActivity implements View.OnClickL
     TextView txtvisor;
     Button bt1, bt2, bt3, bt4, bt5, bt6, bt7, bt8, bt9, bt0;
     Button btmais, btmenos, btvezes, btdivide, btigual;
-    Button btlimpaAll, btvirgula;
+    Button btlimpaAll, btvirgula, btapagaUm;
     boolean novoCalculo = true;
 
     double resultado, n1, n2;
@@ -66,6 +66,9 @@ public class actv_calculadora extends AppCompatActivity implements View.OnClickL
         btvirgula = findViewById((R.id.btvirgula));
         btvirgula.setOnClickListener(this);
 
+        btapagaUm = findViewById(R.id.bt_apagaUm);
+        btapagaUm.setOnClickListener(this);
+
 
     }
 
@@ -94,52 +97,87 @@ public class actv_calculadora extends AppCompatActivity implements View.OnClickL
             txtvisor.append("9");
         else if (v.getId() == R.id.bt_0_calculadora)
             txtvisor.append("0");
+            // BOTÃO MAIS++++++++++
         else if (v.getId() == R.id.btmais) {
             String text = txtvisor.getText().toString();
             simbolo = "+";
 
-            if (text.endsWith("+") || text.endsWith("-") || text.endsWith("*") || text.endsWith("/")) {
+
+            if (text.endsWith("+") || text.endsWith("-") || text.endsWith("*") || text.endsWith("/") || text.endsWith(".")) {
                 text = text.substring(0, text.length() - 1);
                 txtvisor.setText(text + simbolo);
-            } else
+            } else if (stringVazia(text) == 0)
+                txtvisor.setText("");
+            else if (text.startsWith("-"))
+                txtvisor.setText(text + "+");
+            else
                 logicaBt_operacao();
 
-        } else if (v.getId() == R.id.btmenos) {
+        }
+        // BOTÃO MENOS---------------------
+        else if (v.getId() == R.id.btmenos) {
             String text = txtvisor.getText().toString();
             simbolo = "-";
 
-            if (text.endsWith("+") || text.endsWith("-") || text.endsWith("*") || text.endsWith("/")) {
+            if (text.endsWith("+") || text.endsWith("-") || text.endsWith("*") || text.endsWith("/") || text.endsWith(".")) {
                 text = text.substring(0, text.length() - 1);
                 txtvisor.setText(text + simbolo);
-            } else
+            } else if (stringVazia(text) == 0)
+                txtvisor.setText("");
+            else if (text.startsWith("-"))
+                txtvisor.setText(text + "-");
+            else
                 logicaBt_operacao();
 
-        } else if (v.getId() == R.id.btvezes) {
+        }
+        // BOTÃO VEZES **************************
+        else if (v.getId() == R.id.btvezes) {
             String text = txtvisor.getText().toString();
             simbolo = "*";
 
-            if (text.endsWith("+") || text.endsWith("-") || text.endsWith("*") || text.endsWith("/")) {
+            if (text.endsWith("+") || text.endsWith("-") || text.endsWith("*") || text.endsWith("/") || text.endsWith(".")) {
                 text = text.substring(0, text.length() - 1);
                 txtvisor.setText(text + simbolo);
-            } else
+            } else if (stringVazia(text) == 0)
+                txtvisor.setText("");
+            else if (text.startsWith("-"))
+                txtvisor.setText(text + "*");
+            else
                 logicaBt_operacao();
-        } else if (v.getId() == R.id.btdivide) {
+        }
+        //BOTÃO DIVIDIR/////////////////////////////
+        else if (v.getId() == R.id.btdivide) {
 
             String text = txtvisor.getText().toString();
             simbolo = "/";
 
-            if (text.endsWith("+") || text.endsWith("-") || text.endsWith("*") || text.endsWith("/")) {
+            if (text.endsWith("+") || text.endsWith("-") || text.endsWith("*") || text.endsWith("/") || text.endsWith(".")) {
                 text = text.substring(0, text.length() - 1);
                 txtvisor.setText(text + simbolo);
-            } else
+            } else if (stringVazia(text) == 0)
+                txtvisor.setText("");
+            else if (text.startsWith("-"))
+                txtvisor.setText(text + "/");
+            else
                 logicaBt_operacao();
-        } else if (v.getId() == R.id.btigual) {
+        }
+        // TODO ACABAR LOGICA DO BOTÃO IGUAL
+        else if (v.getId() == R.id.btigual) {
             String text = txtvisor.getText().toString();
-            if (text.endsWith("+") || text.endsWith("-") || text.endsWith("*") || text.endsWith("/")) {
+            if (text.endsWith("+") || text.endsWith("-") || text.endsWith("*") || text.endsWith("/") || text.endsWith(".")) {
                 text = text.substring(0, text.length() - 1);
                 txtvisor.setText(text);
-            } else
+            } else if (stringVazia(text) == 0)
+                txtvisor.setText("");
+            else if (text.indexOf('+') != -1 || text.indexOf('-') != -1 || text.indexOf('*') != -1 || text.indexOf('/') != -1) {
                 calculo();
+                text = txtvisor.getText().toString();
+                n1 = intOuDouble(text);
+                novoCalculo = true;
+            } else {
+
+            }
+
 
         } else if (v.getId() == R.id.bt_limpatext_calc) {
             txtvisor.setText("");
@@ -147,18 +185,43 @@ public class actv_calculadora extends AppCompatActivity implements View.OnClickL
 
         } else if (v.getId() == R.id.btvirgula) {
             String text = txtvisor.getText().toString();
-            if (text.indexOf(',') != -1) {
-
-            } else {
+            if (text.indexOf('.') == -1) {
                 if (text == "") {
-                    text = "0,";
+                    text = "0.";
                     txtvisor.setText(text);
                 } else if (text.endsWith("+") || text.endsWith("-") || text.endsWith("*") || text.endsWith("/")) {
                     text = text.substring(0, text.length() - 1);
-                    txtvisor.setText(text + ",");
+                    txtvisor.setText(text + ".");
                 } else
-                    txtvisor.setText(text + ",");
+                    txtvisor.setText(text + ".");
+            } else {
+                if (text.indexOf('+') != -1 || text.indexOf('-') != -1 || text.indexOf('*') != -1 || text.indexOf('/') != -1) {
+                    int count = 0;
+                    for (int i = 0; i < text.length(); i++) {
+                        if (text.charAt(i) == '.') {
+                            count++;
+                        }
+                    }
+                    if (text.endsWith("+") || text.endsWith("-") || text.endsWith("*") || text.endsWith("/")) {
+
+                    } else if (count < 2)
+                        txtvisor.setText(text + ".");
+
+                }
             }
+        } else if (v.getId() == R.id.bt_apagaUm) {
+            String text = txtvisor.getText().toString();
+
+            if (stringVazia(text) == 0) {
+                txtvisor.setText("");
+                novoCalculo = true;
+            } else {
+                text = text.substring(0, text.length() - 1);
+                txtvisor.setText(text);
+                if (stringVazia(text) == 0)
+                    novoCalculo = true;
+            }
+
         }
     }
 
@@ -168,34 +231,44 @@ public class actv_calculadora extends AppCompatActivity implements View.OnClickL
 
         String text = txtvisor.getText().toString();
 
+
         if (text.indexOf('+') != -1) {
 
             int posicao = text.indexOf('+');
             String text2 = text.substring(posicao + 1).trim();
-            n2 = Integer.parseInt(text2);
+            n2 = intOuDouble(text2);
             resultado = n1 + n2;
-            mostraResultado();
-
-
-        } else if (text.indexOf('-') != -1) {
-            int posicao = text.indexOf('-');
-            String text2 = text.substring(posicao + 1).trim();
-            n2 = Integer.parseInt(text2);
-            resultado = n1 - n2;
             mostraResultado();
         } else if (text.indexOf('*') != -1) {
             int posicao = text.indexOf('*');
             String text2 = text.substring(posicao + 1).trim();
-            n2 = Integer.parseInt(text2);
+            n2 = intOuDouble(text2);
             resultado = n1 * n2;
             mostraResultado();
         } else if (text.indexOf('/') != -1) {
             int posicao = text.indexOf('/');
             String text2 = text.substring(posicao + 1).trim();
-            n2 = Integer.parseInt(text2);
+            n2 = intOuDouble(text2);
             resultado = n1 / n2;
             mostraResultado();
+        } else {
+            if (text.startsWith("-")) {
+                int posicao1 = text.indexOf("-");
+                int posicao2 = text.indexOf("-", posicao1 + 1);
+                String text2 = text.substring(posicao2 + 1).trim();
+                n2 = intOuDouble(text2);
+                resultado = n1 - n2;
+                mostraResultado();
+            } else {
+                int posicao = text.indexOf('-');
+                String text2 = text.substring(posicao + 1).trim();
+                n2 = intOuDouble(text2);
+                resultado = n1 - n2;
+                mostraResultado();
+            }
         }
+
+
     }
 
     // Metodo serve para ver se o resultado é double ou int - escreve resultado no textview
@@ -208,65 +281,73 @@ public class actv_calculadora extends AppCompatActivity implements View.OnClickL
         txtvisor.setText(resultadoTexto);
     }
 
-    public double intOuDouble(double nTemp) {
-        String text = txtvisor.getText().toString();
+    public double intOuDouble(String texto1) {
+
         try {
-            nTemp = Integer.parseInt(text);
+            double nTemp = Integer.parseInt(texto1);
             return nTemp;
         } catch (NumberFormatException e1) {
-            nTemp = Double.parseDouble(text);
+            double nTemp = Double.parseDouble(texto1);
             return nTemp;
         }
     }
 
+    public int stringVazia(String text1) {
+
+        int count = 0;
+        for (int i = 0; i < text1.length(); i++) {
+            count++;
+        }
+        return count;
+    }
+
+
     public void logicaBt_operacao() {
-        String text;
+
 
         if (novoCalculo) {
+            String text = txtvisor.getText().toString();
             if (simbolo == "+") {
-                //criada um variavel "text" que recebe o valor atual do visor
-                text = txtvisor.getText().toString();
-                //convertemos o String para Int e guardamos no n1
-                n1 = Integer.parseInt(text);
-                //adicionamos "+" no visor
+                n1 = intOuDouble(text);
                 txtvisor.append("+");
                 novoCalculo = false;
             } else if (simbolo == "-") {
-                text = txtvisor.getText().toString();
-                n1 = Integer.parseInt(text);
+
+                n1 = intOuDouble(text);
                 txtvisor.append("-");
                 novoCalculo = false;
             } else if (simbolo == "*") {
-                text = txtvisor.getText().toString();
-                n1 = Integer.parseInt(text);
+                n1 = intOuDouble(text);
                 txtvisor.append("*");
                 novoCalculo = false;
             } else if (simbolo == "/") {
-                text = txtvisor.getText().toString();
-                n1 = Integer.parseInt(text);
+                n1 = intOuDouble(text);
                 txtvisor.append("/");
                 novoCalculo = false;
             }
         } else {
+            String text = txtvisor.getText().toString();
             if (simbolo == "+") {
                 calculo();
-
-                n1 = intOuDouble(n1);
+                text = txtvisor.getText().toString();
+                n1 = intOuDouble(text);
                 txtvisor.append("+");
 
             } else if (simbolo == "-") {
                 calculo();
-                n1 = intOuDouble(n1);
+                text = txtvisor.getText().toString();
+                n1 = intOuDouble(text);
                 txtvisor.append("-");
             } else if (simbolo == "*") {
                 calculo();
-
-                n1 = intOuDouble(n1);
+                text = txtvisor.getText().toString();
+                n1 = intOuDouble(text);
                 txtvisor.append("*");
 
             } else if (simbolo == "/") {
                 calculo();
-                n1 = intOuDouble(n1);
+                text = txtvisor.getText().toString();
+                n1 = intOuDouble(text);
                 txtvisor.append("/");
             }
         }
