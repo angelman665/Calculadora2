@@ -14,10 +14,10 @@ public class actv_calculadora extends AppCompatActivity implements View.OnClickL
     Button bt1, bt2, bt3, bt4, bt5, bt6, bt7, bt8, bt9, bt0;
     Button btmais, btmenos, btvezes, btdivide, btigual;
     Button btlimpaAll, btvirgula, btapagaUm;
-    boolean novoCalculo = true;
+    boolean novoCalculo = true, negativo = false;
 
     double resultado, n1, n2;
-    String resultadoTexto, simbolo;
+    String resultadoTexto, simbolo, menos = "-";
 
     // CODIGO EXECUTADO ASSIM QUE É SELECIONADA A OPÇÃO "CALCULADORA" NO MENU
     @Override
@@ -123,9 +123,7 @@ public class actv_calculadora extends AppCompatActivity implements View.OnClickL
                 text = text.substring(0, text.length() - 1);
                 txtvisor.setText(text + simbolo);
             } else if (stringVazia(text) == 0)
-                txtvisor.setText("");
-            else if (text.startsWith("-"))
-                txtvisor.setText(text + "-");
+                txtvisor.append("-");
             else
                 logicaBt_operacao();
 
@@ -174,7 +172,6 @@ public class actv_calculadora extends AppCompatActivity implements View.OnClickL
                 text = txtvisor.getText().toString();
                 n1 = intOuDouble(text);
                 novoCalculo = true;
-            } else {
 
             }
 
@@ -238,18 +235,22 @@ public class actv_calculadora extends AppCompatActivity implements View.OnClickL
             String text2 = text.substring(posicao + 1).trim();
             n2 = intOuDouble(text2);
             resultado = n1 + n2;
+
+
             mostraResultado();
         } else if (text.indexOf('*') != -1) {
             int posicao = text.indexOf('*');
             String text2 = text.substring(posicao + 1).trim();
             n2 = intOuDouble(text2);
             resultado = n1 * n2;
+
             mostraResultado();
         } else if (text.indexOf('/') != -1) {
             int posicao = text.indexOf('/');
             String text2 = text.substring(posicao + 1).trim();
             n2 = intOuDouble(text2);
             resultado = n1 / n2;
+
             mostraResultado();
         } else {
             if (text.startsWith("-")) {
@@ -258,16 +259,17 @@ public class actv_calculadora extends AppCompatActivity implements View.OnClickL
                 String text2 = text.substring(posicao2 + 1).trim();
                 n2 = intOuDouble(text2);
                 resultado = n1 - n2;
+
                 mostraResultado();
             } else {
                 int posicao = text.indexOf('-');
                 String text2 = text.substring(posicao + 1).trim();
                 n2 = intOuDouble(text2);
                 resultado = n1 - n2;
+
                 mostraResultado();
             }
         }
-
 
     }
 
@@ -278,8 +280,11 @@ public class actv_calculadora extends AppCompatActivity implements View.OnClickL
         else
             resultadoTexto = String.valueOf(resultado);
 
+
         txtvisor.setText(resultadoTexto);
+
     }
+
 
     public double intOuDouble(String texto1) {
 
