@@ -14,10 +14,11 @@ public class actv_calculadora extends AppCompatActivity implements View.OnClickL
     Button bt1, bt2, bt3, bt4, bt5, bt6, bt7, bt8, bt9, bt0;
     Button btmais, btmenos, btvezes, btdivide, btigual;
     Button btlimpaAll, btvirgula, btapagaUm;
-    boolean novoCalculo = true, negativo = false;
+    boolean novoCalculo = true, temPonto = false;
 
     double resultado, n1, n2;
     String resultadoTexto, simbolo, menos = "-";
+    int count = 0;
 
     // CODIGO EXECUTADO ASSIM QUE É SELECIONADA A OPÇÃO "CALCULADORA" NO MENU
     @Override
@@ -104,8 +105,14 @@ public class actv_calculadora extends AppCompatActivity implements View.OnClickL
 
 
             if (text.endsWith("+") || text.endsWith("-") || text.endsWith("*") || text.endsWith("/") || text.endsWith(".")) {
-                text = text.substring(0, text.length() - 1);
-                txtvisor.setText(text + simbolo);
+                if (text.startsWith("-") || text.startsWith(".")) {
+                    text = text.substring(0, text.length() - 1);
+                    txtvisor.setText(text);
+                } else {
+                    text = text.substring(0, text.length() - 1);
+                    txtvisor.setText(text + simbolo);
+                }
+
             } else if (stringVazia(text) == 0)
                 txtvisor.setText("");
             else if (text.startsWith("-"))
@@ -134,8 +141,13 @@ public class actv_calculadora extends AppCompatActivity implements View.OnClickL
             simbolo = "*";
 
             if (text.endsWith("+") || text.endsWith("-") || text.endsWith("*") || text.endsWith("/") || text.endsWith(".")) {
-                text = text.substring(0, text.length() - 1);
-                txtvisor.setText(text + simbolo);
+                if (text.startsWith("-") || text.startsWith(".")) {
+                    text = text.substring(0, text.length() - 1);
+                    txtvisor.setText(text);
+                } else {
+                    text = text.substring(0, text.length() - 1);
+                    txtvisor.setText(text + simbolo);
+                }
             } else if (stringVazia(text) == 0)
                 txtvisor.setText("");
             else if (text.startsWith("-"))
@@ -150,8 +162,13 @@ public class actv_calculadora extends AppCompatActivity implements View.OnClickL
             simbolo = "/";
 
             if (text.endsWith("+") || text.endsWith("-") || text.endsWith("*") || text.endsWith("/") || text.endsWith(".")) {
-                text = text.substring(0, text.length() - 1);
-                txtvisor.setText(text + simbolo);
+                if (text.startsWith("-") || text.startsWith(".")) {
+                    text = text.substring(0, text.length() - 1);
+                    txtvisor.setText(text);
+                } else {
+                    text = text.substring(0, text.length() - 1);
+                    txtvisor.setText(text + simbolo);
+                }
             } else if (stringVazia(text) == 0)
                 txtvisor.setText("");
             else if (text.startsWith("-"))
@@ -159,7 +176,7 @@ public class actv_calculadora extends AppCompatActivity implements View.OnClickL
             else
                 logicaBt_operacao();
         }
-        // TODO ACABAR LOGICA DO BOTÃO IGUAL
+        // BEM VINDO AO INFERNO DOS IF'S
         else if (v.getId() == R.id.btigual) {
             String text = txtvisor.getText().toString();
             if (text.endsWith("+") || text.endsWith("-") || text.endsWith("*") || text.endsWith("/") || text.endsWith(".")) {
@@ -167,12 +184,30 @@ public class actv_calculadora extends AppCompatActivity implements View.OnClickL
                 txtvisor.setText(text);
             } else if (stringVazia(text) == 0)
                 txtvisor.setText("");
-            else if (text.indexOf('+') != -1 || text.indexOf('-') != -1 || text.indexOf('*') != -1 || text.indexOf('/') != -1) {
+            else if (text.startsWith("-")) {
+                if ((text.indexOf('+') != -1 || text.indexOf('*') != -1 || text.indexOf('/') != -1)) {
+                    calculo();
+                    text = txtvisor.getText().toString();
+                    n1 = intOuDouble(text);
+                    novoCalculo = true;
+                } else {
+                    int primeiro = text.indexOf('-'); // Find the index of the first '-'
+                    int segundo = text.indexOf('-', primeiro + 1); // Find the index of the second '-' after the first one
+
+                    boolean temDoisMenos = segundo != -1;
+                    if (temDoisMenos) {
+                        calculo();
+                        text = txtvisor.getText().toString();
+                        n1 = intOuDouble(text);
+                        novoCalculo = true;
+                    }
+                }
+
+            } else {
                 calculo();
                 text = txtvisor.getText().toString();
                 n1 = intOuDouble(text);
                 novoCalculo = true;
-
             }
 
 
@@ -182,29 +217,41 @@ public class actv_calculadora extends AppCompatActivity implements View.OnClickL
 
         } else if (v.getId() == R.id.btvirgula) {
             String text = txtvisor.getText().toString();
-            if (text.indexOf('.') == -1) {
+            if (temPonto == false) {
                 if (text == "") {
                     text = "0.";
                     txtvisor.setText(text);
+                    temPonto = true;
                 } else if (text.endsWith("+") || text.endsWith("-") || text.endsWith("*") || text.endsWith("/")) {
                     text = text.substring(0, text.length() - 1);
                     txtvisor.setText(text + ".");
-                } else
+                    temPonto = true;
+                } else {
                     txtvisor.setText(text + ".");
-            } else {
-                if (text.indexOf('+') != -1 || text.indexOf('-') != -1 || text.indexOf('*') != -1 || text.indexOf('/') != -1) {
-                    int count = 0;
-                    for (int i = 0; i < text.length(); i++) {
-                        if (text.charAt(i) == '.') {
-                            count++;
-                        }
-                    }
-                    if (text.endsWith("+") || text.endsWith("-") || text.endsWith("*") || text.endsWith("/")) {
+                    temPonto = true;
+                }
 
-                    } else if (count < 2)
+            } else {
+                count = 0;
+
+                for (int i = 0; i < text.length(); i++) {
+                    if (text.charAt(i) == '.') {
+                        count++;
+                    }
+                }
+
+                if (text.indexOf('/') != -1 || text.indexOf('+') != -1 || text.indexOf('-') != -1 || text.indexOf('*') != -1) {
+                    if (text.endsWith("/") || text.endsWith("+") || text.endsWith("-") || text.endsWith("*")) {
+
+                    } else if (text.endsWith(".")) {
+
+                    } else if (count == 2) {
+
+                    } else
                         txtvisor.setText(text + ".");
 
                 }
+
             }
         } else if (v.getId() == R.id.bt_apagaUm) {
             String text = txtvisor.getText().toString();
@@ -275,10 +322,13 @@ public class actv_calculadora extends AppCompatActivity implements View.OnClickL
 
     // Metodo serve para ver se o resultado é double ou int - escreve resultado no textview
     public void mostraResultado() {
-        if (resultado % 1 == 0)
+        if (resultado % 1 == 0) {
             resultadoTexto = String.valueOf((int) resultado);
-        else
+            temPonto = false;
+        } else {
             resultadoTexto = String.valueOf(resultado);
+            temPonto = true;
+        }
 
 
         txtvisor.setText(resultadoTexto);
