@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/azulClaro"
+    android:orientation="vertical"
+    android:padding="12dp"
+    tools:context=".actv_calculadora">
+
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@color/laranja"
+        android:gravity="center"
+        android:text="SELOS"
+        android:textColor="@color/black"
+        android:textSize="20pt">
+
+
+    </TextView>
+
+
+    <EditText
+        android:id="@+id/txt_visor_selos"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@color/white"
+        android:inputType="number"
+        android:textAlignment="textEnd"
+        android:textSize="20pt">
+
+
+    </EditText>
+
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/bt_gerarselos_selos"
+                android:layout_width="170dp"
+                android:layout_height="70dp"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:text="Gerar Selos"></Button>
+
+            <Button
+                android:id="@+id/bt_limpar_selos"
+                android:layout_width="170dp"
+                android:layout_height="70dp"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:text="Limpar"></Button>
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/laranja"
+                android:text="Selo de 5: "
+                android:textSize="30dp"></TextView>
+
+            <TextView
+                android:id="@+id/txt_selos5_selos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/laranja"
+
+                android:textSize="30dp"></TextView>
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/laranja"
+                android:text="Selo de 3: "
+                android:textSize="30dp"></TextView>
+
+            <TextView
+                android:id="@+id/txt_selos3_selos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/laranja"
+
+                android:textSize="30dp"></TextView>
+
+        </TableRow>
+    </TableLayout>
+
+    <Button
+        android:id="@+id/bt_voltar_selos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="Voltar">
+
+    </Button>
+
+
+</LinearLayout>

@@ -2,6 +2,7 @@ package com.example.calculadora2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +15,7 @@ public class actv_calculadora extends AppCompatActivity implements View.OnClickL
     Button bt1, bt2, bt3, bt4, bt5, bt6, bt7, bt8, bt9, bt0;
     Button btmais, btmenos, btvezes, btdivide, btigual;
     Button btlimpaAll, btvirgula, btapagaUm, btfact, btpositnegativ;
+    Button btVoltar;
     boolean novoCalculo = true, temPonto = false;
 
     double resultado, n1, n2;
@@ -75,6 +77,13 @@ public class actv_calculadora extends AppCompatActivity implements View.OnClickL
 
         btpositnegativ = findViewById(R.id.bt_positnegat_calc);
         btpositnegativ.setOnClickListener(this);
+
+        btVoltar = findViewById(R.id.bt_voltar_calc);
+        btVoltar.setOnClickListener(this);
+
+        novoCalculo = true;
+        temPonto = false;
+        resultado = 0;
 
 
     }
@@ -341,6 +350,7 @@ public class actv_calculadora extends AppCompatActivity implements View.OnClickL
             //factorial não funciona com nº negativos ou decimais.
             if (!(text.startsWith("-") || text.endsWith("-") || text.endsWith("/") || text.endsWith("*") || text.endsWith("+")) && !temPonto && !text.isEmpty()) {
                 n1 = intOuDouble(text);
+                resultado = 0;
                 resultado += factorial((int) n1);
                 mostraResultado();
             }
@@ -354,6 +364,9 @@ public class actv_calculadora extends AppCompatActivity implements View.OnClickL
                 text = "-" + text;
 
             txtvisor.setText(text);
+        } else if (v.getId() == R.id.bt_voltar_calc) {
+            Intent it = new Intent(actv_calculadora.this, MainActivity.class);
+            startActivity(it);
         }
     }
 

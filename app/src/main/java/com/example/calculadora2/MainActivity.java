@@ -41,9 +41,9 @@ public class MainActivity extends AppCompatActivity {
             Intent it = new Intent(MainActivity.this, actv_calculadora.class);
             startActivity(it);
             Toast.makeText(this, "Calculadora", Toast.LENGTH_SHORT).show();
-        }
-        ;
-        if (item.getItemId() == R.id.mnu_selos_mymnu) {
+        } else if (item.getItemId() == R.id.mnu_selos_mymnu) {
+            Intent it = new Intent(MainActivity.this, actv_selos.class);
+            startActivity(it);
             Toast.makeText(this, "Selos", Toast.LENGTH_SHORT).show();
         }
         ;
