@@ -46,6 +46,11 @@ public class MainActivity extends AppCompatActivity {
             startActivity(it);
             Toast.makeText(this, "Selos", Toast.LENGTH_SHORT).show();
         }
+        else if (item.getItemId() == R.id.mnu_jogador_mymnu) {
+            Intent it = new Intent(MainActivity.this, actv_jogadores.class);
+            startActivity(it);
+            Toast.makeText(this, "Jogadores", Toast.LENGTH_SHORT).show();
+        }
         ;
         return super.onOptionsItemSelected(item);
     }

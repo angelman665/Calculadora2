@@ -15,4 +15,11 @@
         android:id="@+id/mnu_selos_mymnu">
 
     </item>
+
+    <item android:title="BDJogador"
+        app:showAsAction="collapseActionView"
+        android:icon="@drawable/chave"
+        android:id="@+id/mnu_jogador_mymnu">
+
+    </item>
 </menu>
